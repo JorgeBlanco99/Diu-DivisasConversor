@@ -1,10 +1,9 @@
-package com.mycompany.diu.conversormonedas;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.mycompany.diu.conversormonedas;
 
 /**
  *
@@ -13,7 +12,7 @@ package com.mycompany.diu.conversormonedas;
 public class Conversor extends javax.swing.JFrame {
 
     /**
-     * Creates new form Conversor
+     * Creates new form ConversorD
      */
     public Conversor() {
         initComponents();
@@ -28,34 +27,32 @@ public class Conversor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Conversor = new javax.swing.JLabel();
-        Teuros = new javax.swing.JLabel();
-        Tdolares = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        euroText = new javax.swing.JLabel();
+        dolaresText = new javax.swing.JLabel();
+        Enviar = new javax.swing.JButton();
         eurosIn = new javax.swing.JTextField();
         dolaresIn = new javax.swing.JTextField();
-        Convertir = new javax.swing.JButton();
         confirmacion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Conversor.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        Conversor.setText("Convensor");
+        titulo.setText("Conversor");
 
-        Teuros.setText("Euros");
+        euroText.setText("Euros");
 
-        Tdolares.setText("Dolares:");
+        dolaresText.setText("Dolares");
 
-        Convertir.setText("Convertir");
-        Convertir.addActionListener(new java.awt.event.ActionListener() {
+        Enviar.setText("Convertir");
+        Enviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConvertirActionPerformed(evt);
+                EnviarActionPerformed(evt);
             }
         });
 
-        confirmacion.setSelectedTextColor(new java.awt.Color(255, 51, 51));
-        confirmacion.addActionListener(new java.awt.event.ActionListener() {
+        dolaresIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmacionActionPerformed(evt);
+                dolaresInActionPerformed(evt);
             }
         });
 
@@ -64,55 +61,55 @@ public class Conversor extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(Teuros))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(confirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Convertir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(titulo)
+                                .addGap(23, 23, 23))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(dolaresText)
+                                .addGap(26, 26, 26))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(euroText)
+                                .addGap(34, 34, 34))
+                            .addComponent(Enviar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(eurosIn)
-                            .addComponent(dolaresIn))))
-                .addContainerGap(133, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Conversor)
-                        .addGap(147, 147, 147))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Tdolares)
-                        .addGap(169, 169, 169))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(confirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                            .addComponent(dolaresIn))
+                        .addGap(146, 146, 146))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(Conversor)
-                .addGap(18, 18, 18)
-                .addComponent(Teuros)
+                .addGap(40, 40, 40)
+                .addComponent(titulo)
+                .addGap(26, 26, 26)
+                .addComponent(euroText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(eurosIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Tdolares)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dolaresText)
+                .addGap(7, 7, 7)
                 .addComponent(dolaresIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(Convertir)
                 .addGap(18, 18, 18)
+                .addComponent(Enviar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(confirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ConvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConvertirActionPerformed
+    private void dolaresInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dolaresInActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dolaresInActionPerformed
+
+    private void EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarActionPerformed
         // TODO add your handling code here:
         String euros = eurosIn.getText();
         String dolares = dolaresIn.getText();
@@ -130,11 +127,7 @@ public class Conversor extends javax.swing.JFrame {
             // error al introducir
             confirmacion.setText("debe dejar uno de los dos campos en vacios");
         }
-    }//GEN-LAST:event_ConvertirActionPerformed
-
-    private void confirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_confirmacionActionPerformed
+    }//GEN-LAST:event_EnviarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,6 +155,7 @@ public class Conversor extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Conversor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -172,12 +166,12 @@ public class Conversor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Conversor;
-    private javax.swing.JButton Convertir;
-    private javax.swing.JLabel Tdolares;
-    private javax.swing.JLabel Teuros;
+    private javax.swing.JButton Enviar;
     private javax.swing.JTextField confirmacion;
     private javax.swing.JTextField dolaresIn;
+    private javax.swing.JLabel dolaresText;
+    private javax.swing.JLabel euroText;
     private javax.swing.JTextField eurosIn;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
