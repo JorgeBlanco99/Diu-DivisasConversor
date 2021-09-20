@@ -5,6 +5,9 @@
  */
 package com.mycompany.diu.conversormonedas;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author jorge
@@ -114,37 +117,29 @@ public class Conversor extends javax.swing.JFrame {
         String euros = eurosIn.getText();
         String dolares = dolaresIn.getText();
         double valor;
-        if(euros.trim().length() == 0 && dolares.trim().length() != 0 && isNumeric(dolares.trim()) == true ){
+        if(euros.trim().length() == 0 && dolares.trim().length() != 0 && onlyDouble(dolares.trim())){
            valor = Double.parseDouble(dolares.trim())*0.85;
             eurosIn.setText(String.format("%.2f", valor));
             confirmacion.setText("Operacion Realizada con Exito");
-        }else if (euros.trim().length() != 0 && dolares.trim().length() == 0 && isNumeric(euros.trim()) == true){
+        }else if (euros.trim().length() != 0 && dolares.trim().length() == 0 && onlyDouble(euros.trim())){
             valor = Double.parseDouble(euros.trim())*1.17;
             dolaresIn.setText(String.format("%.2f", valor));
             confirmacion.setText("Operacion Realizada con Exito");
 
         }else if (euros.trim().length() != 0 && dolares.trim().length() != 0 ){
             confirmacion.setText("debe dejar uno de los dos campos en vacios");
-        }else if(isNumeric(euros.trim()) == false && euros.trim().length() != 0){
+        }else if(!onlyDouble(euros.trim()) && euros.trim().length() != 0){
             confirmacion.setText("El valor introducido en euros debe ser numerico");
 
-        }else if(isNumeric(dolares.trim())  == false && dolares.trim().length() != 0){
+        }else if(!onlyDouble(dolares.trim()) && dolares.trim().length() != 0){
             confirmacion.setText("El valor introducido en dolares debe ser numerico");
 
         }
     }//GEN-LAST:event_EnviarActionPerformed
-    public static boolean isNumeric(String cadena) {
-
-        boolean resultado;
-
-        try {
-            Integer.parseInt(cadena);
-            resultado = true;
-        } catch (NumberFormatException excepcion) {
-            resultado = false;
-        }
-
-        return resultado;
+    private boolean onlyDouble(String str){
+        Pattern pattern = Pattern.compile("[0-9]+[.][0-9]?|[0-9]+");
+        Matcher matcher  = pattern.matcher(str);
+        return matcher.matches();
     }
     /**
      * @param args the command line arguments
