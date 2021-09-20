@@ -113,12 +113,14 @@ public class Conversor extends javax.swing.JFrame {
         // TODO add your handling code here:
         String euros = eurosIn.getText();
         String dolares = dolaresIn.getText();
-        
+        double valor;
         if(euros.trim().length() == 0 && dolares.trim().length() != 0 && isNumeric(dolares.trim()) == true ){
-            eurosIn.setText("cambiado");
+           valor = Double.parseDouble(dolares.trim())*0.85;
+            eurosIn.setText(String.format("%.2f", valor));
             confirmacion.setText("Operacion Realizada con Exito");
         }else if (euros.trim().length() != 0 && dolares.trim().length() == 0 && isNumeric(euros.trim()) == true){
-            dolaresIn.setText("cambiado");
+            valor = Double.parseDouble(euros.trim())*1.17;
+            dolaresIn.setText(String.format("%.2f", valor));
             confirmacion.setText("Operacion Realizada con Exito");
 
         }else if (euros.trim().length() != 0 && dolares.trim().length() != 0 ){
