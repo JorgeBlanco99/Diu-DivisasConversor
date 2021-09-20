@@ -113,22 +113,37 @@ public class Conversor extends javax.swing.JFrame {
         // TODO add your handling code here:
         String euros = eurosIn.getText();
         String dolares = dolaresIn.getText();
-        //dolares a euros
-        if(euros.trim().length() == 0 && dolares.trim().length() != 0){
-            eurosIn.setText("u");
+        
+        if(euros.trim().length() == 0 && dolares.trim().length() != 0 && isNumeric(dolares.trim()) == true ){
+            eurosIn.setText("cambiado");
+            confirmacion.setText("Operacion Realizada con Exito");
+        }else if (euros.trim().length() != 0 && dolares.trim().length() == 0 && isNumeric(euros.trim()) == true){
+            dolaresIn.setText("cambiado");
             confirmacion.setText("Operacion Realizada con Exito");
 
-        // euros a dolares
-        }else if (euros.trim().length() != 0 && dolares.trim().length() == 0 ){
-            dolaresIn.setText("o");
-            confirmacion.setText("Operacion Realizada con Exito");
-
-        }else{
-            // error al introducir
+        }else if (euros.trim().length() != 0 && dolares.trim().length() != 0 ){
             confirmacion.setText("debe dejar uno de los dos campos en vacios");
+        }else if(isNumeric(euros.trim()) == false && euros.trim().length() != 0){
+            confirmacion.setText("El valor introducido en euros debe ser numerico");
+
+        }else if(isNumeric(dolares.trim())  == false && dolares.trim().length() != 0){
+            confirmacion.setText("El valor introducido en dolares debe ser numerico");
+
         }
     }//GEN-LAST:event_EnviarActionPerformed
+    public static boolean isNumeric(String cadena) {
 
+        boolean resultado;
+
+        try {
+            Integer.parseInt(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+
+        return resultado;
+    }
     /**
      * @param args the command line arguments
      */
@@ -165,6 +180,7 @@ public class Conversor extends javax.swing.JFrame {
         });
     }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Enviar;
     private javax.swing.JTextField confirmacion;
