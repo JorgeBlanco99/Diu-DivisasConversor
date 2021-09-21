@@ -37,6 +37,7 @@ public class Conversor extends javax.swing.JFrame {
         eurosIn = new javax.swing.JTextField();
         dolaresIn = new javax.swing.JTextField();
         confirmacion = new javax.swing.JTextField();
+        reiniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +60,13 @@ public class Conversor extends javax.swing.JFrame {
             }
         });
 
+        reiniciar.setText("Reiniciar");
+        reiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reiniciarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,9 +74,6 @@ public class Conversor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(confirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -80,10 +85,18 @@ public class Conversor extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(euroText)
                                 .addGap(34, 34, 34))
-                            .addComponent(Enviar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(eurosIn)
+                            .addComponent(eurosIn, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                             .addComponent(dolaresIn))
-                        .addGap(146, 146, 146))))
+                        .addGap(146, 146, 146))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(Enviar)
+                                .addGap(41, 41, 41)
+                                .addComponent(reiniciar))
+                            .addComponent(confirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,10 +112,12 @@ public class Conversor extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addComponent(dolaresIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Enviar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Enviar)
+                    .addComponent(reiniciar))
+                .addGap(23, 23, 23)
                 .addComponent(confirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -126,8 +141,10 @@ public class Conversor extends javax.swing.JFrame {
             dolaresIn.setText(String.format("%.2f", valor));
             confirmacion.setText("Operacion Realizada con Exito");
 
+        }else if (euros.trim().length() == 0 && dolares.trim().length() == 0){
+            confirmacion.setText("Debe introducir algun valor");
         }else if (euros.trim().length() != 0 && dolares.trim().length() != 0 ){
-            confirmacion.setText("debe dejar uno de los dos campos en vacios");
+            confirmacion.setText("Debe dejar uno de los dos campos en vacios");
         }else if(!onlyDouble(euros.trim()) && euros.trim().length() != 0){
             confirmacion.setText("El valor introducido en euros debe ser numerico");
 
@@ -136,6 +153,15 @@ public class Conversor extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_EnviarActionPerformed
+
+    private void reiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reiniciarActionPerformed
+        // TODO add your handling code here:
+        confirmacion.setText("");
+        eurosIn.setText("");
+        dolaresIn.setText("");
+
+
+    }//GEN-LAST:event_reiniciarActionPerformed
     private boolean onlyDouble(String str){
         Pattern pattern = Pattern.compile("[0-9]+[.][0-9]?|[0-9]+");
         Matcher matcher  = pattern.matcher(str);
@@ -185,6 +211,7 @@ public class Conversor extends javax.swing.JFrame {
     private javax.swing.JLabel dolaresText;
     private javax.swing.JLabel euroText;
     private javax.swing.JTextField eurosIn;
+    private javax.swing.JButton reiniciar;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
