@@ -44,6 +44,7 @@ public class Conversor extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         euroText.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         euroText.setText("Euros");
