@@ -5,15 +5,6 @@
  */
 package com.mycompany.diu.conversormonedas;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,7 +13,6 @@ import java.util.regex.Pattern;
  * @author jorge
  */
 public class Conversor extends javax.swing.JFrame {
-    private Double rate;
 
     /**
      * Creates new form ConversorD
@@ -177,45 +167,22 @@ public class Conversor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private Double conversionRate() throws MalformedURLException, IOException {
-        URL url = new URL("http://data.fixer.io/api/latest?access_key=c6fd29b6839f0be230229a6b56eeee1c&symbols=USD");
-        
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Accept", "application/json");
-        BufferedReader br = new BufferedReader(new InputStreamReader(
-            (conn.getInputStream())));
-        
-        String str = br.readLine();
-        
-        return Double.parseDouble(str.substring(87,91));
-        
-    }
-    
     private void dolaresInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dolaresInActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dolaresInActionPerformed
 
     private void EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarActionPerformed
-        
-        
-        try {
-            rate = conversionRate();
-        } catch (IOException ex) {
-            Logger.getLogger(Conversor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
+        // TODO add your handling code here:
         String euros = eurosIn.getText();
         String dolares = dolaresIn.getText();
         double valor;
         if(euros.trim().length() == 0 && dolares.trim().length() != 0 && onlyDouble(dolares.trim())){
-           valor = Double.parseDouble(dolares.trim())/rate;
+           valor = Double.parseDouble(dolares.trim())*0.85;
             eurosIn.setText(String.format("%.2f", valor));
             confirmacion.setText("Operacion Realizada con Exito");
             
         }else if (euros.trim().length() != 0 && dolares.trim().length() == 0 && onlyDouble(euros.trim())){
-            valor = Double.parseDouble(euros.trim())*rate;
+            valor = Double.parseDouble(euros.trim())*1.17;
             dolaresIn.setText(String.format("%.2f", valor));
             confirmacion.setText("Operacion Realizada con Exito");
 
@@ -282,8 +249,10 @@ public class Conversor extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new Conversor().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Conversor().setVisible(true);
+            }
         });
     }
 
