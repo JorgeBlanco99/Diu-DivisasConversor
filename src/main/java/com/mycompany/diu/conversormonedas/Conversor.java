@@ -198,7 +198,7 @@ public class Conversor extends javax.swing.JFrame {
     }//GEN-LAST:event_dolaresInActionPerformed
 
     private void EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarActionPerformed
-        
+       // TODO add your handling code here:
         
         try {
             rate = conversionRate();
